@@ -1,0 +1,117 @@
+<div>
+    <h1>Hello Mundo, {{ title }}, {{name}}</h1>
+      <p>Congratulations! Your app is running. 🎉</p>
+      <br/>
+      <p>
+        
+        Edad = {{edad}} {{esMayorDeEdad() }} <br/>
+        Salario = {{salario}}<br/>
+        Salario = {{salario*2}}<br/>
+      </p>
+      <br/>
+      
+      <p (click) = "incrementar()">
+        Edad = {{edad}} <span *ngIf = "edad <18"> Es mayor de edad </span>
+      </p>
+        <ul>
+          <li *ngFor ="let s of sueldos">{{s}}</li>
+        </ul>
+      <p>
+      <hr/>
+      <p>
+        {{contador}}
+        <button (click) = "incrementar()">
+          Incrementar
+        </button>
+      </p> 
+      
+      <hr/>
+      <form>
+        <input type="text" name="txtName" [(ngModel)]="name"/> <br/>
+        A =  <input type="number" name="txtA" [(ngModel)]="a"/> <br/>
+        B =  <input type="number" name="txtB" [(ngModel)]="b"/> <br/>
+        C =  <input type="number" name="txtC" [(ngModel)]="c"/> <br/>
+        <button (click) = "sumar()"> sumar</button>
+      </form>
+      <table border = "1">
+        <tr>
+          <td>Codigo</td>
+          <td>Descripcion</td>
+          <td>precio</td>
+          <td>acciones</td>
+        </tr>
+        <tr *ngFor = "let art of articulos ">
+          <td >{{art.codigo}}</td>
+          <td>{{art.descripcion}}</td>
+          <td>{{art.precio}}</td>
+          <td>
+            <button (click) ="eliminar(art.codigo)">Eliminar</button>      
+            <button (click) = "seleccionar(art.codigo)">Seleccionar</button>
+          </td>
+        </tr>
+        
+      </table>
+      codigo = <input type="number" name="txtCodi"  [(ngModel)]="cod"/> <br/>    
+      descripcion = <input type="text" name="txtDescr"  [(ngModel)]="des"/> <br/>
+      precio = <input type="number"name="txtPrec" [(ngModel)]="prec"/> <br/>
+      <button (click)="agregar(cod)">Agregar</button>
+      
+      <hr/>
+        <app-dado #dado1 color = "red"></app-dado>
+        <app-dado #dado2 color = "black"></app-dado>
+        <app-dado #dado3 color = "blue"></app-dado>
+      <hr/>
+      <button (click) = "dado1.lanzar()" >Lanzar 1</button>
+      <button (click) = "dado2.lanzar()" >Lanzar 2</button>
+      <button (click) = "dado3.lanzar()" >Lanzar 3</button>
+      <button (click) = "dado1.lanzar();dado2.lanzar();dado3.lanzar()" >Lanzar todos 1 </button>
+      <button (click) = "lanzar()" >Lanzar todos 2</button>
+      
+      <hr/>
+      {{minuto}} min
+      <app-cronometro (minuto) = actualizar($event)></app-cronometro>
+      <hr/>
+      
+      <table border = "1">
+        <tr>
+          <td>Codigo</td>
+          <td>Descripcion</td>
+          <td>precio</td>
+          <td>acciones</td>
+        </tr>
+        <tr *ngFor = "let art of articulos ">
+          <td >{{art.codigo}}</td>
+          <td>{{art.descripcion}}</td>
+          <td>{{art.precio}}</td>
+          <td>
+            <button (click) ="borrarDos(art.codigo)" >Eliminar</button>      
+            <button (click) = "selecDos(art.codigo)">Seleccionar DOS</button>
+          </td>
+        </tr>
+      </table>
+      
+      <app-formulario #formu [listObjetos] = "(articulos)" (validar) = "remplazarListArticulos($event)"></app-formulario>
+
+      <!--<app-formulario [artic]="articulos"></app-formulario>-->
+      
+      <hr/>
+      <table border = "1">
+        <tr>
+          <td>Nombre</td>
+          <td>Raza</td>
+          <td>Imagen</td>
+          <td>acciones</td>
+        </tr>
+        <tr *ngFor = "let per of perros ">
+          <td >{{per.nombre}}</td>
+          <td>{{per.raza}}</td>
+          <td> <img src="{{per.foto}} " width="100px"/></td>
+          <td>
+            <button >Eliminar</button>      
+            <button >Seleccionar</button>
+            <img [src]="per.foto" width="100px" />
+          </td>
+        </tr>
+      </table>
+
+</div>
